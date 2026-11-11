@@ -437,7 +437,7 @@ async def executar_comando(event):
 async def main():
     global usuario, bot, DONO
     if str(config.API_HASH).startswith("cole_") or "cole_o_token" in str(config.BOT_TOKEN):
-        log.error("Preencha o config.py (API_ID, API_HASH e BOT_TOKEN do Telegram) — veja o LEIA-ME.md.")
+        log.error("Preencha o .env (TG_API_ID, TG_API_HASH e TG_BOT_TOKEN do Telegram): copie o .env.exemplo — veja o README.md.")
         sys.exit(1)
     api.iniciar_em_segundo_plano(getattr(config, "PORTA_PAINEL", 8787), getattr(config, "HOST_PAINEL", "127.0.0.1"))
     usuario = TelegramClient(SESSAO_USUARIO, config.API_ID, config.API_HASH)

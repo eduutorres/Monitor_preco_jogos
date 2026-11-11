@@ -3,18 +3,33 @@
 # ============================================================
 
 import os
+from pathlib import Path
 
-# 1) Pegue em https://my.telegram.org  →  API development tools
-# 2) Token do seu bot de alertas (crie no @BotFather com /newbot)
-# Os valores ficam no segredos.py (copie o segredos.exemplo.py), que não vai para o GitHub.
-# No servidor também dá para usar as variáveis de ambiente TG_API_ID, TG_API_HASH e TG_BOT_TOKEN.
-try:
-    import segredos as _segredos
-except ImportError:
-    _segredos = None
-API_ID = int(os.environ.get("TG_API_ID") or getattr(_segredos, "API_ID", 0) or 0)
-API_HASH = os.environ.get("TG_API_HASH") or getattr(_segredos, "API_HASH", "") or "cole_o_api_hash"
-BOT_TOKEN = os.environ.get("TG_BOT_TOKEN") or getattr(_segredos, "BOT_TOKEN", "") or "cole_o_token_do_bot"
+
+def _carregar_env(arquivo: Path):
+    """Lê o .env (CHAVE=valor por linha). Variável que já existe no sistema tem prioridade."""
+    if not arquivo.is_file():
+        return
+    for linha in arquivo.read_text(encoding="utf-8-sig").splitlines():
+        linha = linha.strip()
+        if not linha or linha.startswith("#") or "=" not in linha:
+            continue
+        chave, _, valor = linha.partition("=")
+        valor = valor.strip()
+        if len(valor) >= 2 and valor[0] == valor[-1] and valor[0] in "\"'":
+            valor = valor[1:-1]
+        os.environ.setdefault(chave.strip(), valor)
+
+
+# As chaves do Telegram (e a senha do painel) ficam no arquivo .env, que NÃO vai para o GitHub.
+# Copie o .env.exemplo com o nome .env e preencha (veja o README).
+_carregar_env(Path(__file__).resolve().parent / ".env")
+
+# 1) https://my.telegram.org  →  API development tools  (TG_API_ID e TG_API_HASH no .env)
+# 2) Token do seu bot de alertas: @BotFather → /newbot   (TG_BOT_TOKEN no .env)
+API_ID = int(os.environ.get("TG_API_ID") or 0)
+API_HASH = os.environ.get("TG_API_HASH") or "cole_o_api_hash"
+BOT_TOKEN = os.environ.get("TG_BOT_TOKEN") or "cole_o_token_do_bot"
 
 # 3) Canais monitorados. Rode `python codigo\listar_canais.py` para descobrir os IDs.
 #    "plataforma" é usada quando a mensagem não diz a plataforma

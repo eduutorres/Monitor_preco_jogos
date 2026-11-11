@@ -143,7 +143,7 @@ function criarMonitor(opcoes = {}) {
         if (!linha.trim()) continue
         log(linha)
         if (/ainda não fez login/i.test(linha)) faltaLogin = true
-        if (/preencha o config\.py/i.test(linha)) faltaConfig = true
+        if (/preencha o (config\.py|\.env)/i.test(linha)) faltaConfig = true
       }
     }
     filho.stdout.on('data', repassarLog)
