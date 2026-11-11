@@ -1,0 +1,19 @@
+.env
+*.session
+*.session-journal
+*.db
+*.db-*
+capas/
+capas_demo/
+dados/
+__pycache__/
+web/node_modules/
+logs/
+
+# chaves do Telegram (copie segredos.exemplo.py para segredos.py)
+segredos.py
+# cópias do banco
+backups/
+# configuração do servidor local (pode ter senha)
+servidor/config.json
+*.pid

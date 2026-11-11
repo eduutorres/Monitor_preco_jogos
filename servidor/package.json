@@ -1,0 +1,7 @@
+{
+  "name": "monitor-jogos-servidor",
+  "private": true,
+  "description": "Gerencia o monitor Python e repassa o /api. Usado por server/api.js (host de C:\www). Sem dependências.",
+  "main": "monitor.js",
+  "engines": { "node": ">=16" }
+}
