@@ -26,7 +26,7 @@ e também em `logs\monitor.log` nesta pasta.
    ```
    python -m pip install -r requirements.txt
    ```
-2. Preencha o `config.py` (Telegram e canais), como no LEIA-ME.
+2. Copie `segredos.exemplo.py` para `segredos.py` e preencha as chaves do Telegram; os canais ficam no `config.py` (veja o LEIA-ME).
 3. Faça o login no Telegram **nesta máquina**, num Prompt de Comando nesta pasta (pede telefone e código):
    ```
    python codigo\listar_canais.py
@@ -57,7 +57,7 @@ Acesse `http://localhost/Monitor_preco_jogos/` (ou pelo IP da máquina na rede).
 ## Se algo der errado
 | No log do servidor | O que fazer |
 |---|---|
-| `Preencha o config.py` | Coloque API_ID, API_HASH e BOT_TOKEN no `config.py` |
+| `Preencha o config.py` | Coloque API_ID, API_HASH e BOT_TOKEN no `segredos.py` |
 | `Não encontrei o Python` | Instale o Python com "Add to PATH" ou preencha `"python"` no config.json |
 | `Falta fazer login no Telegram` | Rode `python codigo\listar_canais.py` nesta pasta; ele tenta de novo sozinho |
 | `O monitor parou... Reiniciando` repetindo | As linhas logo acima dizem o motivo |

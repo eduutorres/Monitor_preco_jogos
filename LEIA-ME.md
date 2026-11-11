@@ -15,11 +15,11 @@
 
 ### 1. Credenciais da sua conta
 - Entre em https://my.telegram.org com seu número → **API development tools**
-- Crie um app (nome e descrição quaisquer) e copie **api_id** e **api_hash** para o `config.py`
+- Crie um app (nome e descrição quaisquer) e copie **api_id** e **api_hash** para o `segredos.py` (copie antes o `segredos.exemplo.py` com o nome `segredos.py`; ele não vai para o GitHub)
 
 ### 2. Bot de alertas
 - No Telegram, abra o **@BotFather** → `/newbot` → escolha nome e usuário
-- Copie o **token** para `BOT_TOKEN` no `config.py`
+- Copie o **token** para `BOT_TOKEN` no `segredos.py`
 - **Abra o seu bot e mande /start** (sem isso ele não consegue te mandar mensagem)
 
 ### 3. IDs dos canais
